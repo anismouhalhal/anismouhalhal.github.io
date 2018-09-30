@@ -1,0 +1,29 @@
+<HTML>
+<head>
+<SCRIPT language ="javascript">
+navname=navigator.appName.substring(0,3);
+navversion=navigator.appVersion.substring(0,1);
+if (navname !="Mic" ||navversion >=4 )
+{
+debut=new Date;
+debut=debut.getTime();
+}
+function tempsdechargement(){
+if (navname !="Mic" ||navversion>=4)
+	{fin=new Date;
+	fin=fin.getTime();
+	secondes=(fin-debut)/1000;
+	if (secondes>1){
+	 window.staus='page chargée en '+secondes+' secondes.'; 
+	 				}
+	else{
+	 window.staus='page chargée en '+secondes+' seconde.'; 
+		}
+	}
+}
+</script>
+</HEAD>
+<body onLoad="tempsdechargement()" >
+toto
+</BODY>
+</HTML>

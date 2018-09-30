@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Scrolling machine à écrire</title>
+<script LANGUAGE="JavaScript">
+<!--
+var texte = 'Le texte à faire défiler est à mettre ici...'
+var timerID = null;
+var pos = 0;
+//position de la lettre a afficher
+var delaiScroll = 50;
+//vitesse du scroll
+var pause = 2000;
+//effectue une pause quand le texte est entièrement affiché
+//ici, 2 secondes
+
+function startScroll() {
+  var msg;
+
+  if (pos >= texte.length) {
+    pos = 0;
+  }
+
+  if (pos == 0) {
+    msg = texte;
+    timerID = setTimeout("startScroll()", pause);
+  }
+  else {
+    msg = texte.substring(0, pos);
+    timerID = setTimeout("startScroll()", delaiScroll);
+  }
+  pos++;
+  window.document.formScroll.textScroll.value = msg;
+//ou dans la barre de status
+//  window.status = msg;
+}
+
+function stopScroll() {
+  clearTimeout(timerID);
+  window.status = '';
+}
+//-->
+</script>
+</head>
+
+<body onLoad="startScroll()" onUnLoad="stopScroll()">
+
+<h1 align="center">Scrolling machine à écrire</h1>
+
+<hr>
+
+<form name="formScroll">
+<p><input type="text" name="textScroll" size="50"></p>
+</form>
+</body>
+</html> 
+
